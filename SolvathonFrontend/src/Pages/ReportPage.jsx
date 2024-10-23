@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const ReportPage = () => {
   const [articles, setArticles] = useState([]);
 
@@ -8,7 +10,9 @@ const ReportPage = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get('/fetchData');
+        const response = await axios.get(`${BACKEND_URL}/api/article/fetchData`, {
+          withCredentials: true, // Enable credentials
+        });
         setArticles(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
