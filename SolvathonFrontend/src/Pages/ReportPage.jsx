@@ -16,7 +16,7 @@ const ReportPage = () => {
           withCredentials: true, // Enable credentials
         });
         if (response.data.length === 0) {
-          setArticles(null); // Set articles to null if empty
+          setArticles([]); // Set articles to null if empty
           setMessage("No articles to analyze."); // Set message for no articles
         } else {
           setArticles(response.data); // Set articles if data exists
