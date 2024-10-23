@@ -9,12 +9,14 @@ const AnalyzeAllButton = () => {
 
   const handleAnalyzeAll = async () => {
     setLoading(true); // Start loading
+    setMessage(""); // Clear previous message
     try {
       const response = await axios.post(`${BACKEND_URL}/api/article/analyzeAll`);
-      setMessage(response.data.message);
+      setMessage(response.data.message || "Analysis complete.");
     } catch (error) {
       console.error("Error analyzing all articles", error);
-      setMessage("Failed to analyze articles.");
+      const errorMessage = error.response?.data?.message || "Failed to analyze articles."; 
+      setMessage(errorMessage);
     } finally {
       setLoading(false); // End loading
     }
@@ -33,7 +35,13 @@ const AnalyzeAllButton = () => {
         {loading ? "Analyzing..." : "Analyze All"} {/* Display loading text */}
       </button>
       {message && (
-        <div className="mt-4 p-4 bg-primary-light rounded-lg">
+        <div
+          className={`mt-4 p-4 rounded-lg ${
+            message === "Failed to analyze articles."
+              ? "bg-red-100 text-red-700"
+              : "bg-primary-light text-primary-dark"
+          }`}
+        >
           <p>{message}</p>
         </div>
       )}
@@ -42,3 +50,4 @@ const AnalyzeAllButton = () => {
 };
 
 export default AnalyzeAllButton;
+
