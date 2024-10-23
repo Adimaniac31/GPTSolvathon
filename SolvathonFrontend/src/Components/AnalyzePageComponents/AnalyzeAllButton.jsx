@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const AnalyzeAllButton = () => {
   const [message, setMessage] = useState("");
 
   const handleAnalyzeAll = async () => {
     try {
-      const response = await axios.post('/analyzeAll');
+      const response = await axios.post(`${BACKEND_URL}/api/article/analyzeAll`);
       setMessage(response.data.message);
     } catch (error) {
       console.error("Error analyzing all articles", error);

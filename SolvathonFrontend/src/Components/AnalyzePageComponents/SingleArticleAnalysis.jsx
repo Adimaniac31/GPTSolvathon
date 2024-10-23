@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const SingleArticleAnalysis = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -15,7 +17,7 @@ const SingleArticleAnalysis = () => {
     };
 
     try {
-      const response = await axios.post('/analyzeNow', articleData);
+      const response = await axios.post(`${BACKEND_URL}/api/article/analyzeNow`, articleData);
       setAnalysis(response.data);
     } catch (error) {
       console.error("Error analyzing the article", error);
