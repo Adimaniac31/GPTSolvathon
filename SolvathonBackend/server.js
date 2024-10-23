@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import articleRoutes from './routes/article.route.js';
 import { syncDatabase } from './sync.js';  // Import the sync function
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.use(cors({
 
 // Sync the database and create tables
 syncDatabase();
+app.use('/api/article', articleRoutes);
 
 const PORT = process.env.PORT_SERVER || 3000;
 app.listen(PORT, () => {
