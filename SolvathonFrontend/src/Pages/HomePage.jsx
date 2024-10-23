@@ -12,18 +12,6 @@ const HomePage = () => {
         </p>
         <div className="flex flex-col space-y-4">
           <Link
-            to="/analyze-single"
-            className="w-full bg-primary-dark text-white py-2 rounded-lg hover:bg-primary-darkest transition-all transform hover:scale-105 shadow-lg"
-          >
-            Analyze a Single Article
-          </Link>
-          <Link
-            to="/analyze-all"
-            className="w-full bg-primary-dark text-white py-2 rounded-lg hover:bg-primary-darkest transition-all transform hover:scale-105 shadow-lg"
-          >
-            Analyze All Articles
-          </Link>
-          <Link
             to="/report"
             className="w-full bg-primary-dark text-white py-2 rounded-lg hover:bg-primary-darkest transition-all transform hover:scale-105 shadow-lg"
           >
