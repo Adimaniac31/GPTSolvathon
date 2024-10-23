@@ -1,6 +1,7 @@
 // Navbar.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from '../../assets/logo.jpg'; // Adjust the path to where your logo is stored
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,10 @@ const Navbar = () => {
 
   return (
     <nav className="bg-primary-dark text-white p-4 flex justify-between items-center">
-      <div className="text-xl font-bold">Content Compass</div>
+      <div className="flex items-center">
+        <img src={logo} alt="Logo" className="h-8 mr-2" /> {/* Add your logo here */}
+        <div className="text-xl font-bold">Article Analyser</div>
+      </div>
       <div className="md:hidden">
         <button onClick={toggleMenu} className="focus:outline-none">
           <svg
@@ -41,3 +45,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

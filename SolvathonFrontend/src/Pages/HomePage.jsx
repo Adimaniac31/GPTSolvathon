@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="bg-white min-h-screen flex flex-col items-center justify-center">
       <div className="p-8 text-center">
-        <h1 className="text-4xl font-bold mb-4 text-primary-dark animate-bounce">Welcome to Content Compass</h1>
+        <h1 className="text-4xl font-bold mb-4 text-primary-dark animate-bounce">Welcome to Article Analyser</h1>
         <p className="mb-6 text-lg">
           Your guide to analyzing and validating content with ease. Explore our features to get insights on articles!
         </p>
