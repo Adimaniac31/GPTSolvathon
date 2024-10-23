@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const ArticleForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -14,7 +16,7 @@ const ArticleForm = () => {
     };
 
     try {
-      await axios.post('/saveData', articleData);
+      await axios.post(`${BACKEND_URL}/api/article/saveData`, articleData);
       alert("Article saved successfully!");
     } catch (error) {
       console.error("There was an error saving the article!", error);
