@@ -7,9 +7,11 @@ const SingleArticleAnalysis = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [analysis, setAnalysis] = useState(null);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
 
     const articleData = {
       title: title,
@@ -21,6 +23,8 @@ const SingleArticleAnalysis = () => {
       setAnalysis(response.data);
     } catch (error) {
       console.error("Error analyzing the article", error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -61,9 +65,12 @@ const SingleArticleAnalysis = () => {
 
         <button
           type="submit"
-          className="w-full bg-primary-dark text-white py-2 rounded-lg hover:bg-primary-darkest transition-all"
+          className={`w-full py-2 rounded-lg transition-all ${
+            loading ? "bg-gray-500" : "bg-primary-dark"
+          } text-white`}
+          disabled={loading} // Disable button while loading
         >
-          Analyze Article
+          {loading ? "Analyzing..." : "Analyze Article"} {/* Display loading text */}
         </button>
       </form>
 
